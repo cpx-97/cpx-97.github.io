@@ -1,0 +1,73 @@
+/* 在这里添加你的自定义 CSS 样式 */
+body {
+  background: #f8f8f8; /* 浅灰色背景，更接近示例博客 */
+}
+
+/* 关于我小部件的样式 */
+.widget-wrap .about-me-avatar {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.widget-wrap .about-me-avatar img {
+  width: 100px; /* 头像大小 */
+  height: 100px;
+  border-radius: 50%; /* 圆形头像 */
+  border: 2px solid #ddd; /* 头像边框 */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* 轻微阴影 */
+}
+
+.widget-wrap .about-me-name {
+  text-align: center;
+  font-size: 1.5em; /* 昵称字体大小 */
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.widget-wrap .about-me-description {
+  text-align: center;
+  font-size: 0.9em; /* 简介字体大小 */
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.widget-wrap .about-me-social {
+  text-align: center;
+}
+
+.widget-wrap .about-me-social a {
+  display: inline-block;
+  margin: 0 8px; /* 社交图标间距 */
+  font-size: 1.8em; /* 社交图标大小 */
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.widget-wrap .about-me-social a:hover {
+  color: #258fb8; /* 鼠标悬停颜色 */
+}
+
+/* 调整侧边栏小部件的间距，让“关于我”看起来更独立 */
+.widget-wrap {
+    margin-bottom: 30px; /* 增加小部件之间的底部外边距 */
+}
+
+#wrap {
+  background: none; /* 移除 #wrap 的背景，让 body 背景可见 */
+}
+
+#banner {
+  background: none !important; /* 移除 #banner 的背景，让 body 背景完全显现 */
+}
+
+/* 如果你想改变 banner 的背景为其他图片或颜色，可以在这里添加样式，例如：*/
+/*
+#banner {
+  background: #f0f0f0 !important; /* 纯色背景 */
+/* background: url('/images/your_new_banner.jpg') no-repeat center center fixed !important; */
+/* background-size: cover !important; */
+/*
+}
+*/ 
