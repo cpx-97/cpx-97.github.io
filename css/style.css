@@ -122,7 +122,9 @@ html {
 }
 body {
   font-family: "Lucida Grande", Verdana, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
-  background: #fff;
+  background: url("background/bg-4.jpg") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga" on;
