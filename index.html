@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no" />
-<meta name="author" content="John Doe" />
+<meta name="author" content="cpx-97" />
 
 
     
@@ -23,7 +23,7 @@
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="cpx-97">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -208,7 +208,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">专注于前端</div>
+                    <div id="js-aboutme">我是一名热衷于前端开发的程序员，喜欢分享技术和生活中的点滴。</div>
                 </section>
                 
             </div>
@@ -260,190 +260,65 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><div class="about-me-container">
+  <img src="/images/cpx.png" alt="Avatar" class="avatar">
+  <h1>cpx-97</h1>
   
-    <article id="post-docker常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <p>邮箱: <a href="mailto:2425277803@qq.com">2425277803@qq.com</a></p>
   
-    <div class="article-meta">
-      <a href="/2025/07/11/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
-      <time datetime="2025-07-11T07:09:44.000Z" itemprop="datePublished">2025-07-11</time>
-</a>
-
-
-    </div>
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+    <p>GitHub: <a href="https://github.com/cpx-97" target="_blank">https://github.com/cpx-97</a></p>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2025/07/11/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">docker常用命令</a>
-    </h1>
   
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" alt="Docker 图标"></p>
-<h1 id="Docker-常用命令与-Docker-Compose-操作"><a href="#Docker-常用命令与-Docker-Compose-操作" class="headerlink" title="Docker 常用命令与 Docker Compose 操作"></a>Docker 常用命令与 Docker Compose 操作</h1><h2 id="一、Docker-常用命令"><a href="#一、Docker-常用命令" class="headerlink" title="一、Docker 常用命令"></a>一、Docker 常用命令</h2><h3 id="1-镜像相关"><a href="#1-镜像相关" class="headerlink" title="1. 镜像相关"></a>1. 镜像相关</h3><ul>
-<li>查看本地镜像：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></li>
-<li>拉取镜像：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull 镜像名[:标签]</span><br></pre></td></tr></table></figure></li>
-<li>删除镜像：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi 镜像ID/镜像名</span><br></pre></td></tr></table></figure></li>
-<li>给镜像打标签：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag 源镜像:标签 新镜像:新标签</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="2-容器相关"><a href="#2-容器相关" class="headerlink" title="2. 容器相关"></a>2. 容器相关</h3><ul>
-<li>查看正在运行的容器：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure></li>
-<li>查看所有容器（包括已停止）：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure></li>
-<li>启动容器：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start 容器ID/容器名</span><br></pre></td></tr></table></figure></li>
-<li>停止容器：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop 容器ID/容器名</span><br></pre></td></tr></table></figure></li>
-<li>删除容器：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> 容器ID/容器名</span><br></pre></td></tr></table></figure></li>
-<li>进入容器：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 容器ID/容器名 bash</span><br></pre></td></tr></table></figure></li>
-<li>查看容器日志：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs 容器ID/容器名</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="3-容器与镜像清理"><a href="#3-容器与镜像清理" class="headerlink" title="3. 容器与镜像清理"></a>3. 容器与镜像清理</h3><ul>
-<li>删除所有已停止的容器：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container prune</span><br></pre></td></tr></table></figure></li>
-<li>删除所有未被使用的镜像：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure></li>
-<li>一键清理所有无用数据：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system prune</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="4-构建镜像"><a href="#4-构建镜像" class="headerlink" title="4. 构建镜像"></a>4. 构建镜像</h3><ul>
-<li>通过 Dockerfile 构建镜像：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t 镜像名:标签 .</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="5-网络与端口映射"><a href="#5-网络与端口映射" class="headerlink" title="5. 网络与端口映射"></a>5. 网络与端口映射</h3><ul>
-<li>运行容器并映射端口：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 主机端口:容器端口 镜像名</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<h2 id="二、Docker-Compose-常用操作"><a href="#二、Docker-Compose-常用操作" class="headerlink" title="二、Docker Compose 常用操作"></a>二、Docker Compose 常用操作</h2><h3 id="1-Docker-Compose-简介"><a href="#1-Docker-Compose-简介" class="headerlink" title="1. Docker Compose 简介"></a>1. Docker Compose 简介</h3><p>Docker Compose 是用于定义和运行多容器 Docker 应用的工具。通过 <code>docker-compose.yml</code> 文件，可以一次性启动、停止、管理多个服务。</p>
-<h3 id="2-常用命令"><a href="#2-常用命令" class="headerlink" title="2. 常用命令"></a>2. 常用命令</h3><ul>
-<li>启动服务（后台）：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure></li>
-<li>启动服务（前台）：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up</span><br></pre></td></tr></table></figure></li>
-<li>停止服务：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose down</span><br></pre></td></tr></table></figure></li>
-<li>查看服务日志：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose logs</span><br></pre></td></tr></table></figure></li>
-<li>查看服务状态：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose ps</span><br></pre></td></tr></table></figure></li>
-<li>重启服务：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose restart</span><br></pre></td></tr></table></figure></li>
-<li>构建（或重新构建）服务：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose build</span><br></pre></td></tr></table></figure></li>
-<li>停止单个服务：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose stop 服务名</span><br></pre></td></tr></table></figure></li>
-<li>启动单个服务：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose start 服务名</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="3-docker-compose-yml-示例"><a href="#3-docker-compose-yml-示例" class="headerlink" title="3. docker-compose.yml 示例"></a>3. docker-compose.yml 示例</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">db:</span></span><br><span class="line">  <span class="attr">image:</span> <span class="string">mysql:5.7</span></span><br><span class="line">  <span class="attr">environment:</span></span><br><span class="line">    <span class="attr">MYSQL_ROOT_PASSWORD:</span> <span class="string">example</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;3306:3306&quot;</span></span><br><span class="line"><span class="attr">web:</span></span><br><span class="line">  <span class="attr">image:</span> <span class="string">nginx:latest</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;8080:80&quot;</span></span><br><span class="line">  <span class="attr">depends_on:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">db</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-常见问题与排查"><a href="#4-常见问题与排查" class="headerlink" title="4. 常见问题与排查"></a>4. 常见问题与排查</h3><ul>
-<li>查看容器日志排查问题：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose logs 服务名</span><br></pre></td></tr></table></figure></li>
-<li>进入容器排查：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> 服务名 bash</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<h2 id="三、参考资料"><a href="#三、参考资料" class="headerlink" title="三、参考资料"></a>三、参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.docker.com/">Docker 官方文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.docker.com/compose/">Docker Compose 官方文档</a></li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2025/07/11/hello-world/" class="article-date">
-      <time datetime="2025-07-11T06:21:18.968Z" itemprop="datePublished">2025-07-11</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2025/07/11/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
+    <p>我是一名热衷于前端开发的程序员，喜欢分享技术和生活中的点滴。</p>
   
 </div>
+
+<style>
+.about-me-container {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.about-me-container .avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid #ddd;
+}
+
+.about-me-container h1 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.about-me-container p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.about-me-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.about-me-container a:hover {
+  text-decoration: underline;
+}
+</style> </div>
       <footer id="footer">
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016-2025 John Doe
+                2016-2025 cpx-97
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
@@ -473,22 +348,6 @@
     </div>
     
 <script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
 
 
 
