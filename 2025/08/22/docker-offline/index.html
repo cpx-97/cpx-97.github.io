@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Docker 离线部署常用命令与国内镜像源 | Patience Blog</title><noscript>Please enable JavaScript to view the site</noscript><link rel="icon" href="/img/pwa/favicon.png"><link rel="stylesheet" href="/css/index.css?v=3.0.14"><link rel="canonical" href="https://cpx-97.github.io/cpx-97.github.io/2025/08/22/docker-offline/index.html"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"><meta name="description" content="docker 常用离线部署命令和国内可用镜像源"><meta name="apple-mobile-web-app-capable" content="Patience Blog"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '3.0.14' + ' %c https://github.com/everfu/hexo-theme-solitude',
+'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')</script><script>(()=>{const s={set:(k,v,t)=>{if(t===0)return;const n=new Date();const e={value:v,expiry:n.getTime()+t*86400000};localStorage.setItem(k,JSON.stringify(e))},get:(k)=>{const r=localStorage.getItem(k);if(!r)return;const o=JSON.parse(r);const n=new Date();if(n.getTime()>o.expiry){localStorage.removeItem(k);return}return o.value}};window.utils={saveToLocal:s}})();</script><script>initTheme=()=>{let d=window.matchMedia('(prefers-color-scheme: dark)').matches;const c=utils.saveToLocal.get('theme');document.documentElement.setAttribute('data-theme', c===undefined?(d?'dark':'light'):c)};initTheme();</script><script>const GLOBAL_CONFIG={root:'/',algolia:undefined,localsearch:undefined,runtime:'2022-07-24 00:00:00',lazyload:{enable:true,error:'/img/error_load.avif'},copyright:{"limit":50,"author":"Author: Patience","link":"Link: ","source":"Source: Patience Blog","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."},highlight:{"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},randomlink:false,lang:{"theme":{"dark":"Dark","light":"Light"},"copy":{"success":"Copied","error":"Copy failed"},"backtop":"Back to top","time":{"day":" days ago","hour":" hours ago","just":"just","min":" minutes ago","month":" months ago"},"day":" days","f12":"Developer mode is turned on, please follow the GPL.","totalk":"You don't need to delete blank lines, just type in your comments."},aside:{state:{morning:"早上好，新的一天开始了",noon:"🍲 午餐时间",afternoon:"🌞 下午好",night:"早点休息",goodnight:"晚安 😴"},witty_words:[],witty_comment:{prefix:'Long time no see, ',back:'Welcome back again,'}},covercolor:{enable:false},comment:false,lightbox:'null',right_menu:false,translate:{"translateDelay":0,"defaultEncoding":2},lure:false,expire:false};</script><script id="config-diff">var PAGE_CONFIG={is_post:true,is_page:false,is_home:false,page:'',toc:true,comment:false,ai_text:false,color:false};</script><meta name="generator" content="Hexo"></head><body id="body"><div id="sidebar" style="display:none"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a id="site-name" href="/" title="Back to home"><span class="title">主页</span><i class="solitude fas fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco&&sco.toTop?sco.toTop():window.scrollTo({top:0,behavior:'smooth'})">Docker 离线部署常用命令与国内镜像源</a></div></div></div><div id="nav-left"></div><div id="nav-right"></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/img/default.png" alt="Docker 离线部署常用命令与国内镜像源"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="This article is a Original article, pay attention to the copyright.">Original</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/software/">software</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/docker/"><span class="tags-name tags-punctuation"><i class="solitude fas fa-hashtag"></i>docker</span></a></div></div></div></div><h1 class="post-title">Docker 离线部署常用命令与国内镜像源</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="Posted on 2025-08-22 00:00:00"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2025-08-22T00:00:00.000Z">2025-08-22</time></span></div></div></div><div id="post-info-bottom"></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container">
+<h2>常用基础</h2>
+<pre><code>sudo yum makecache
+systemctl restart docker
+nslookup ebc.mysteel.com
+ping ebc.mysteel.com
+</code></pre>
+
+<h2>容器与进程（docker + gunicorn）</h2>
+<p>容器重启建议流程：</p>
+<ol>
+<li>停止容器 → 修改代码或配置</li>
+<li>必要时修改容器可写层（upper）文件</li>
+<li>清理日志目录（如 <code>./log</code> 或挂载点中的 log）</li>
+<li>保存修改 → 重启容器</li>
+</ol>
+<p>在 Dockerfile 测试阶段，可使用以下命令保持容器前台：</p>
+<pre><code>CMD ["/bin/bash", "-c", "./start_service.sh start && tail -f /dev/null"]
+</code></pre>
+
+<h2>运行示例</h2>
+<h3>docker 老版本兼容</h3>
+<pre><code>docker run --ulimit nproc=65535 --memory=4g --cpus=2 --security-opt seccomp=unconfined \
+--name xbe_model_v1 -i xbe_model:v1
+
+docker run -d -p 8477:8477 --name \
+xbe_model_accuracy_v1 --ulimit nproc=65535 --memory=2g --cpus=2 \
+--security-opt seccomp=unconfined  -i xbe_model_accuracy:v1
+
+docker run --ulimit nproc=65535 --memory=4g --cpus=2 --security-opt seccomp=unconfined  --network host \
+--name xbe_model_refresh_v1 -i xbe_model_refresh:v1
+</code></pre>
+
+<h3>挂载容器外文件</h3>
+<p>线上模型：</p>
+<pre><code>docker run --ulimit nproc=65535 --memory=4g --cpus=2 --security-opt seccomp=unconfined \
+-v /apply/ebc_model/aglz_20241220/aglz_model_temp/aglz_model/code/model/params_xgb.json:/code/model/params_xgb.json \
+-v /apply/ebc_model/aglz_20241220/aglz_model_temp/aglz_model/code/model/params.json:/code/model/params.json \
+--name aglz_model_v2 -it aglz_model:v0.2
+
+docker run -d -p 8488:8488 --name \
+aglz_model_accuracy_v2 --ulimit nproc=65535 --memory=2g --cpus=2 \
+--security-opt seccomp=unconfined aglz_model_accuracy:v0.2
+</code></pre>
+
+<h3>服务运行</h3>
+<pre><code>docker run -d -p 8488:8488 --name \
+huayi_model_accuracy_v1 --ulimit nproc=65535 --memory=2g --cpus=2 \
+--security-opt seccomp=unconfined huayi_model_accuracy:v1
+</code></pre>
+
+<h2>镜像构建与导入/导出</h2>
+<pre><code>docker build -t ebc_model_v1.7.0:v17 .
+docker build -t stats_model:v0.3 .
+
+# 镜像导入/导出
+# docker load &lt; status_model2.tar
+# docker save -o my_image.tar my_image
+
+# 示例
+docker load &lt; hyfz_model_pro_v1.tar
+docker create --name hyfz_model_pro_v1 hyfz_model_v1_pro:v0.1
+docker restart hyfz_model_pro_v1
+sudo docker create --name hyfz_model_pro_v2 --platform linux/amd64 hyfz_model_pro:v0.1
+</code></pre>
+
+<h2>多架构构建（buildx）</h2>
+<pre><code>docker buildx create --use
+docker buildx build --platform linux/amd64,linux/arm64 -t hyfz_model_pro:v0.1 .
+</code></pre>
+
+<h2>更多运行示例</h2>
+<pre><code>docker create --name hyfz_model_v1 hyfz_model:v0.1
+
+docker run -d -p 8488:8488 --name thgn_model_accuracy_v1 -i thgn_model_accuracy:v0.1
+
+# 挂载命令
+docker run --ulimit nproc=65535 --memory=4g --cpus=4 --security-opt seccomp=unconfined \
+-v /apply/thgn_model_pro_20241210/thgn_model/code/model/params_xgb.json:/code/model/params_xgb.json \
+-v /apply/thgn_model_pro_20241210/thgn_model/code/model/params.json:/code/model/params.json \
+--name thgn_model_pro_v20241209 -it thgn_model_pro:v20241209
+
+docker run --ulimit nproc=65535 --memory=2g --cpus=2 --security-opt seccomp=unconfined \
+-d -p 8489:8489 \
+--name thgn_model_accuracy_20250217 -it thgn_model_accuracy_test:v0.2
+
+docker run --ulimit nproc=65535 --memory=2g --cpus=2 --security-opt seccomp=unconfined \
+-v /apply/thgn_model_pro_20241210/thgn_model_accuracy/code/log:/code/log \
+-v /apply/thgn_model_pro_20241210/thgn_model_accuracy/code/utils/logfile:/code/utils/logfile \
+-d -p 8489:8489 \
+--name thgn_model_pro_accuracy_v20241209 -it thgn_model_pro_accuracy:v20241209
+
+docker run --ulimit nproc=65535 --memory=2g --cpus=2 --security-opt seccomp=unconfined \
+-d -p 8489:8489 \
+--name thgn_model_pro_accuracy_v20250218 -it thgn_model_pro_accuracy:v20241209
+
+docker run --ulimit nproc=65535 --memory=2g --cpus=2 --security-opt seccomp=unconfined --network host \
+-v /apply/thgn_model_pro_20241210/thgn_model_refresh/code/utils:/code/utils \
+--name thgn_model_refresh_v20241209 -it thgn_model_refresh:v20241209
+
+docker run --name hyfz_model_v1 --ulimit nproc=65535 --memory=2g --cpus=2 --security-opt seccomp=unconfined hyfz_model:v0.1
+
+# thgn_model
+docker run -d -p 5000:5000 --name thgn_temp_custom_model_v20241106 --ulimit nproc=65535 --memory=2g --cpus=2 --security-opt seccomp=unconfined thgn_temp_custom_model:v0.2
+
+docker run -d -p 5000:5000 --network host --name thgn_pro_custom_model_v20241107 --ulimit nproc=65535 --memory=2g --cpus=2 --security-opt seccomp=unconfined thgn_pro_custom_model:vv20241107
+
+docker run -d -p 5000:5000 --network host --name thgn_pro_custom_model_v20241107_1 --ulimit nproc=65535 --memory=2g --cpus=2 --security-opt seccomp=unconfined 32da88309dfc
+
+docker run -d -p 5000:5000 --name thgn_te_custom_model_v20241106 --ulimit nproc=65535 --memory=2g --cpus=2 --security-opt seccomp=unconfined 32da88309dfc
+</code></pre>
+
+<h2>定时任务</h2>
+<pre><code># 每周六至周五 23:00 重启
+00 23 * * 6,0,1,2,3,4,5 sudo docker restart hyfz_model_pro_v6 >> /apply/hyfz_model/hyfz_model/hyfz_model_pro_v6_cron.log 2>&1
+# 每分钟执行一次（示例）
+* * * * * docker restart hyfz_model_pro_v6 >> /var/log/hyfz_model_pro_v6_cron.log 2>&1
+# 调用接口
+00 22 * * 6,0,1,2,3,4,5 curl http://10.160.173.54:5000/run
+</code></pre>
+
+<h2>Docker DNS 与国内镜像源</h2>
+<p>daemon.json 示例：</p>
+<pre><code>{
+  "dns": ["192.168.171.224", "192.168.171.225", "8.8.8.8"],
+  "registry-mirrors": [
+    "https://hub.uuuadc.top",
+    "https://docker.1panel.live",
+    "https://hub.rat.dev",
+    "https://docker.anyhub.us.kg",
+    "https://docker.chenby.cn",
+    "https://dockerhub.jobcher.com",
+    "https://dockerhub.icu",
+    "https://docker.ckyl.me",
+    "https://docker.awsl9527.cn",
+    "https://docker.hpcloud.cloud",
+    "https://atomhub.openatom.cn",
+    "https://docker.m.daocloud.io"
+  ]
+}
+</code></pre>
+<p>Ubuntu 国内源参考：<a href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/" target="_blank" rel="noopener">清华镜像站 - Ubuntu</a></p>
+
+
+</article></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2024 - 2025 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src= "/img/loading.gif" data-lazy-src="/img/pwa/favicon.png">Patience</a></div><div class="beian-group"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://hexo.io/">Framework: Hexo</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude">Theme: Solitude</a></div></div></div></div></footer></div><div><script src="/js/utils.js?v=3.0.14"></script><script src="/js/main.js?v=3.0.14"></script><script src="/js/third_party/waterfall.min.js?v=3.0.14"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script><script src="https://fastly.jsdelivr.net/npm/typeit@8.8.7/dist/index.umd.min.js"></script><script src="/js/third_party/universe.min.js?v=3.0.14"></script><script>dark();</script><script src="/js/tw_cn.js?v=3.0.14"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script></div><script>/* pjax 保持 */</script></body></html> 

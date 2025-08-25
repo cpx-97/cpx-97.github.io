@@ -1,27 +1,5 @@
-extends includes/layout.pug
-
-block content
-    main.layout#content-inner
-        #archive
-            .article-sort-title #{__('page.archives')}<sup>#{site.posts.find({parent: {$exists: false}}).length}</sup>
-            case theme.page.archives
-                when 0
-                    .article-sort
-                        include includes/mixins/articleSort
-                    include includes/mixins/pagination
-                when 1
-                    .recent-posts#recent-posts
-                        each post,index in page.posts.find({ parent: { $exists: false } }).data
-                            include includes/widgets/home/postList
-                        include includes/mixins/pagination
-                    if theme.comment.hot_tip.enable
-                        include ./includes/widgets/third-party/hot/index.pug
-        include includes/widgets/aside/aside
-
-        <script>
-            const posts = ["2025/08/22/docker-offline-deployment/"];
-            function toRandomPost() {
-                const randomPost = posts[Math.floor(Math.random() * posts.length)];
-                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
-            }
-        </script>
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Archives | Patience Blog</title><link rel="icon" href="/img/pwa/favicon.png"><link rel="stylesheet" href="/css/index.css?v=3.0.14"></head><body id="body"><div class="page" id="body-wrap" style="padding:80px 0;text-align:center;">
+  <h2 style="font-weight:700;">Archives</h2>
+  <p>暂无更多内容</p>
+  <a class="site-page" href="/" style="margin-top:20px;display:inline-block;">返回首页</a>
+</div></body></html> 
